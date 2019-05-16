@@ -13,7 +13,21 @@ const forecast = (lat, long, callback) => {
       const summary = daily.data[0].summary;
       const temperature = currently.temperature;
       const precipProbability = currently.precipProbability;
-      const reply = `${summary} It is currently ${temperature} degrees out. There is a ${precipProbability}% chace of rain`;
+      const reply = `
+      <p>
+      ${summary}
+      </p>
+      <p>It is currently ${temperature} degrees out.</p> 
+      <p>
+      The highest temperature for today is ${
+        daily.data[0].temperatureHigh
+      }, and 
+      the lowest temperature for today is ${daily.data[0].temperatureLow}.
+      </p>
+      <p>
+      There is a ${precipProbability}% chance of rain
+      </p>
+      `;
       callback(null, reply);
     }
   });
